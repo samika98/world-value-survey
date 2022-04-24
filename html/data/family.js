@@ -1,4 +1,4 @@
-var svgMapDataPopulation = { 
+var svgMapDataFamily = { 
   data: {
     DoNotKnow: {
       name: 'DoNotKnow',
