@@ -1,3 +1,4 @@
+//data below
 var data = [
     {country: "Albania", family: 97.5, friends: 36.2,leisure: 18.0,politics:5.4,work:80.5,religion:24.4},
     {country: "Andorra", family: 89.5, friends: 54.9,leisure:62.9,politics:7.8,work:56.9,religion:9.5},
@@ -22,8 +23,8 @@ const color = ["#7f00ff", "#00ffff", "#00ff00", "#ffff00", "#ffa500", "#ff0000"]
 
 //set up svg
 
-const width = window.innerWidth*(3/4);
-const height = window.innerHeight/4;
+const width = window.innerWidth;
+const height = window.innerHeight/3;
 
 const svg= d3.select("#stackedBarChart")
     .append("svg")
@@ -53,25 +54,28 @@ const y = d3.scaleLinear()
 const tooltip = d3.select("#stackedBarChart")
     .append("div")
     .style("opacity",0)
-    .attr("class","tooltip");
+    .attr("class","tooltip")
+    .attr("pointer-events","none");
 
 const mouseover = function(event,d){
     const category = d3.select(this.parentNode).datum().key;
     const value = d.data[category];
+    console.log(d3.pointer(event));
     tooltip
         .html(category + "<br>" + value)
-        .style("opacity",0.7)
-        //.style("left",(event.pageX)+"px")
-        //.style("top",(event.pageY)+"px");
+        .style("opacity",1.5)
+        .style("z-index",99)
+        .style("background-color","lightgrey")
+        .style("position","absolute")
+        .style("left",(d3.pointer(event)[0]-20)+"px")
+        .style("top",(d3.pointer(event)[1])+"px")
+        .on("mouseleave",mouseleave);
+    svg.node()
 }
-var mousemove = function(d) {
-    tooltip
-      .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-      .style("top", (d3.mouse(this)[1]) + "px")
-  }
 
 const mouseleave = function(event, d) {
-    tooltip.style("opacity",0);
+  tooltip.style("opacity",0);
+  svg.node()
 }
 
 //draw it!
@@ -90,7 +94,7 @@ svg.append("g")
     .attr("height", function(d) { return y(d[0])-y(d[1]); })
     .attr("width", x.bandwidth())
     .on("mouseover",mouseover)
-    .on("mouseleave",mouseleave);
+    
 
 //add labels!
 labelheight=height-20
@@ -98,5 +102,5 @@ svg.append("g")
     .attr("transform", "translate(0,"+labelheight+")")
     .call(d3.axisBottom(x).tickFormat(i=>data[i].country));
 svg.append("g")
-    .attr("transform", "translate(25, 0)")
+    .attr("transform", "translate(30, 0)")
     .call(d3.axisLeft(y))

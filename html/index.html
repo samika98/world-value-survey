@@ -28,9 +28,17 @@
          <h1 align="center" class="gradient-text" style="background-color:black;"> Social Values Across The Globe</h1>
       </div>
       <div style="text-align: center;"><span><b>Percentage in x country that said y value was very important<b><span></div>
-            <div id="stackedBarChart"></div> 
-      
+            <div id="stackedBarChart"></div>
+            <span style="color:#7f00ff; background-color: lightgray;">Family</div>
+              <span style="color:#00ffff">Friends</span>
+              <span style="color:#00ff00">Leisure</span>
+              <span style="color:#ffff00;">Politics</span>
+              <span style="color:#ffa500">Work</span>
+              <span style="color:#ff0000">Religion</span>
+      </span>
       <script type="text/javascript" src="script.js"></script>
+      
+
       <div class="row" style="margin-top: 20px;">
       <div class="demo-wrapper col-md-9" >
          <div id = "radio_buttons">            
@@ -70,7 +78,7 @@
             <h2>family importance according to wvs wave 7 (2017-20)</h2>
             <div id="svgMapFamily"></div>
             <script>
-               var x = new svgMap({
+                 new svgMap({
                  targetElementID: 'svgMapFamily',
                  data: svgMapDataFamily,
                  flagType: 'emoji',
