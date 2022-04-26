@@ -19,12 +19,12 @@ var data = [
 ];
 
 //set up color scheme
-const color = ["#7f00ff", "#00ffff", "#00ff00", "#ffff00", "#ffa500", "#ff0000"];
+const color = ["#CC99C9", "#9EC1CF", "#9EE09E", "#FDFD97", "#FEB144", "#FF6663"];
 
 //set up svg
 
-const width = window.innerWidth;
-const height = window.innerHeight/3;
+const width = window.innerWidth*(3/4);
+const height = window.innerHeight/4;
 
 const svg= d3.select("#stackedBarChart")
     .append("svg")
@@ -62,13 +62,21 @@ const mouseover = function(event,d){
     const value = d.data[category];
     console.log(d3.pointer(event));
     tooltip
-        .html(category + "<br>" + value)
+        .html("<strong>"+ category +"</strong>"+ "<br>" + "<strong>"+ value +"</strong>")
         .style("opacity",1.5)
         .style("z-index",99)
         .style("background-color","lightgrey")
         .style("position","absolute")
         .style("left",(d3.pointer(event)[0]-20)+"px")
         .style("top",(d3.pointer(event)[1])+"px")
+        .style("width","120px")
+        .style("height","50px")
+        .style("padding","2px")
+        .style("text-align", "center")
+        .style("font", "15px san-serif" )
+        .style("border-radius", "8px")
+        .style("border", "1px")
+        .style("color", "black")
         .on("mouseleave",mouseleave);
     svg.node()
 }

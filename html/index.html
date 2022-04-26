@@ -28,13 +28,24 @@
          <h1 align="center" class="gradient-text" style="background-color:black;"> Social Values Across The Globe</h1>
       </div>
       <div style="text-align: center;"><span><b>Percentage in x country that said y value was very important<b><span></div>
-            <div id="stackedBarChart"></div>
-            <span style="color:#7f00ff; background-color: lightgray;">Family</div>
+      <table>
+         <th style="padding-left:  10px;padding-right: 10px; text-align: center;"><span>Color Map : </span></th>
+         <th class="purple" style="padding-left:  10px;padding-right: 10px; text-align: center;"><span>Family</span></th>
+         <th class="blue" style="padding-left:  10px;padding-right: 10px; text-align: center;"><span>Friends</span></th>
+         <th class="green" style="padding-left:  10px;padding-right: 10px; text-align: center;"><span>Leisure</span></th>
+         <th class="yellow" style="padding-left:  10px;padding-right: 10px; text-align: center;"><span>Politics</span></th>
+         <th class="orange" style="padding-left:  10px;padding-right: 10px; text-align: center;"><span>Work</span></th>
+         <th class="red" style="padding-left:  10px;padding-right: 10px; text-align: center;"><span>Religion</span></th>
+      </table>   
+         <!--<span style="background-color: black; color: white">Color Map : </span>
+            <span style="color:#7f00ff; background-color: black; padding-right: 10px;">Family</div>
               <span style="color:#00ffff">Friends</span>
               <span style="color:#00ff00">Leisure</span>
               <span style="color:#ffff00;">Politics</span>
               <span style="color:#ffa500">Work</span>
-              <span style="color:#ff0000">Religion</span>
+              <span style="color:#ff0000">Religion</span>-->
+            <div id="stackedBarChart"></div>
+
       </span>
       <script type="text/javascript" src="script.js"></script>
       
@@ -173,8 +184,8 @@
          </div>                                   
       </div> 
       <div class="col-md-3" id="info_box" >            
-            <table id="customers">
-               <caption><b>Overall World view of Social Values<b></caption>
+            <table id="customers" >
+               <caption style="font-variant: small-caps; font-size: 40px;"><b>overall world view of social values<b></caption>              
                <tr>
                   <th>Categories</th>
                   <th>Family</th>
@@ -186,57 +197,57 @@
                </tr>
                <tr>
                   <td>Very Important</td>
-                  <td>89.2</td>
-                  <td>44.9</td>
-                  <td>40.4</td>
-                  <td>12.6</td>
-                  <td>58.2</td>
-                  <td>37.8</td>
+                  <td class="purple">89.2</td>
+                  <td class="blue">44.9</td>
+                  <td class="green">40.4</td>
+                  <td class="yellow">12.6</td>
+                  <td class="orange">58.2</td>
+                  <td class="red">37.8</td>
                </tr>
                <tr>
                   <td>Rather Important</td>
-                  <td>9.3</td>
-                  <td>43.6</td>
-                  <td>44.4</td>
-                  <td>30.4</td>
-                  <td>30.8</td>
-                  <td>24.4</td>
+                  <td class="purple">9.3</td>
+                  <td class="blue">43.6</td>
+                  <td class="green">44.4</td>
+                  <td class="yellow">30.4</td>
+                  <td class="orange">30.8</td>
+                  <td class="red">24.4</td>
                </tr>
                <tr>
                   <td>Not Very Important</td>
-                  <td>1.0</td>
-                  <td>9.7</td>
-                  <td>12.3</td>
-                  <td>34.8</td>
-                  <td>6.7</td>
-                  <td>21.7</td>
+                  <td class="purple">1.0</td>
+                  <td class="blue">9.7</td>
+                  <td class="green">12.3</td>
+                  <td class="yellow">34.8</td>
+                  <td class="orange">6.7</td>
+                  <td class="red">21.7</td>
                </tr>
                <tr>
                   <td>Not at all Important</td>
-                  <td>0.2</td>
-                  <td>1.5</td>
-                  <td>2.3</td>
-                  <td>21.1</td>
-                  <td>3.4</td>
-                  <td>15.2</td>
+                  <td class="purple">0.2</td>
+                  <td class="blue">1.5</td>
+                  <td class="green">2.3</td>
+                  <td class="yellow">21.1</td>
+                  <td class="orange">3.4</td>
+                  <td class="red">15.2</td>
                </tr>
                <tr>
                   <td>Don't Know</td>
-                  <td>0.1</td>
-                  <td>0.1</td>
-                  <td>0.3</td>
-                  <td>0.6</td>
-                  <td>0.4</td>
-                  <td>0.6</td>
+                  <td class="purple">0.1</td>
+                  <td class="blue">0.1</td>
+                  <td class="green">0.3</td>
+                  <td class="yellow">0.6</td>
+                  <td class="orange">0.4</td>
+                  <td class="red">0.6</td>
                </tr>
                <tr>
                   <td>No Answer</td>
-                  <td>0.1</td>
-                  <td>0.1</td>
-                  <td>0.3</td>
-                  <td>0.6</td>
-                  <td>0.4</td>
-                  <td>0.6</td>
+                  <td class="purple">0.1</td>
+                  <td class="blue">0.2</td>
+                  <td class="green">0.3</td>
+                  <td class="yellow">0.4</td>
+                  <td class="orange"> 0.4</td>
+                  <td class="red">0.4</td>
                </tr>
             </table>            
          </div>  
