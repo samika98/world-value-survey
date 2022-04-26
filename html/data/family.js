@@ -2,7 +2,7 @@ var svgMapDataFamily = {
   data: {
     DoNotKnow: {
       name: 'DoNotKnow',
-      format: '{0} km<sup>2</sup>',
+      //format: '{0} km<sup>2</sup>',
       thousandSeparator: ','
     },
     VeryImportant: {
