@@ -1,7 +1,10 @@
 /*! svgMap | https://github.com/StephanWagner/svgMap | MIT License | Copyright Stephan Wagner | https://stephanwagner.me */
 .svgMap-wrapper,
 .svgMap-container {
-  position: relative;
+  
+  width: 100%;
+  margin: 5 5 5 5px;
+  float: center;
 }
 
 .svgMap-block-zoom-notice {

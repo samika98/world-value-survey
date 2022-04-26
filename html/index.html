@@ -1,61 +1,237 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>svgMap HTML demos</title>
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/StephanWagner/svgMap@v2.7.1/dist/svgMap.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/gh/StephanWagner/svgMap@v2.7.1/dist/svgMap.min.css" rel="stylesheet">
-
-    <link href="./demo.css" rel="stylesheet" />
-    <link href="../../dist/svgMap.css" rel="stylesheet" />
-    <script src="../../dist/svgMap.js"></script>
-  </head>
-
-  <body>
-    <div class="demo-wrapper">
-      <!-- Demo GPD -->
-
-      <div class="demo-container">
-        <h2>GDP per capita (PPP)</h2>
-
-        <div id="svgMapGPD"></div>
-        <script src="./data/gdp.js"></script>
-        <script>
-          new svgMap({
-            targetElementID: 'svgMapGPD',
-            data: svgMapDataGPD,
-            mouseWheelZoomEnabled: true,
-            mouseWheelZoomWithKey: true
-          });
-        </script>
+   <head>
+      <title>571 Project: World Values Survey</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://d3js.org/d3.v7.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/StephanWagner/svgMap@v2.7.1/dist/svgMap.min.js"></script>
+      <link href="https://cdn.jsdelivr.net/gh/StephanWagner/svgMap@v2.7.1/dist/svgMap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="data/family.js"></script>
+      <script src="data/friends.js"></script>
+      <script src="data/religion.js"></script>
+      <script src="data/leisure.js"></script>
+      <script src="data/politics.js"></script>
+      <script src="data/work.js"></script>
+      <link href="./demo.css" rel="stylesheet" />
+      <link href="dist/svgMap.css" rel="stylesheet" />
+      <link href="demo.css" rel="stylesheet" />
+      <script src="dist/svgMap.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+      <div style="background-color:black;">
+         <h1 align="center" class="gradient-text" style="background-color:black;"> Social Values Across The Globe</h1>
       </div>
+      <div style="text-align: center;"><span><b>Percentage in x country that said y value was very important<b><span></div>
+            <div id="stackedBarChart"></div> 
+      
+      <script type="text/javascript" src="script.js"></script>
+      <div class="row" style="margin-top: 20px;">
+      <div class="demo-wrapper col-md-9" >
+         <div id = "radio_buttons">            
+            <td align="center" style="background-color: mediumseagreen;"> <span>Choose a social value : <span>
+               <img onLoad="toggle('family')" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />
+               <input type="radio" name="social_value" value="family" checked onclick="toggle('family')"><span>Family</span>  
+               <input type="radio" name="social_value" value="friends" onclick="toggle('friends')"><span>Friends<span>
+               <input type="radio" name="social_value" value="leisure" onclick="toggle('leisure')"><span>Leisure<span>
+               <input type="radio" name="social_value" value="politics" onclick="toggle('politics')"><span>Politics<span>  
+               <input type="radio" name="social_value" value="work" onclick="toggle('work')"><span>Work  </span>
+               <input type="radio" name="social_value" value="religion" onclick="toggle('religion')"><span>Religion  <span>
+            </td>
+         </div>
+         <script>
+            function toggle (field) {
+              
+              function show (elements, specifiedDisplay) {
+                elements = elements.length ? elements : [elements];
+                for (var index = 0; index < elements.length; index++) {
+                  elements[index].style.display = specifiedDisplay || 'block';
+                }
+              }
+            
+              function hide (elements) {
+                elements = elements.length ? elements : [elements];
+                for (var index = 0; index < elements.length; index++) {
+                  elements[index].style.display = 'none';
+                }
+              }
+            
+              hide(document.querySelectorAll('.demo-container'));
+              show(document.getElementById(field));
+             }
+         </script>
 
-      Demo Family
+         <div class="demo-container col-md-9" id="family">
+            <h2>family importance according to wvs wave 7 (2017-20)</h2>
+            <div id="svgMapFamily"></div>
+            <script>
+               var x = new svgMap({
+                 targetElementID: 'svgMapFamily',
+                 data: svgMapDataFamily,
+                 flagType: 'emoji',
+                 mouseWheelZoomEnabled: true,
+                 mouseWheelZoomWithKey: true,
+                 colorMax: '#552586',
+                 colorMin: '#e1d9ec',
+               
+               });
+            </script>
+         </div>
 
-      <div class="demo-container">
-        <h2>Family Importance according to wvs</h2>
+         <div class="demo-container" id ="friends">
+            <h2>friends importance according to wvs wave 7 (2017-20)</h2>
+            <div id="svgMapFriends"></div>
+            <script>     
+               new svgMap({
+               targetElementID: 'svgMapFriends',
+               data: svgMapDataFriends,
+               flagType: 'emoji',
+               mouseWheelZoomEnabled: true,
+               mouseWheelZoomWithKey: true,
+               colorMax: '#03018C',
+               colorMin: '#9EC2FF'
+               });   
+               
+            </script>
+         </div>
 
-        <div id="svgMapFamily"></div>
-        <script src="./data/family.js"></script>
-        <script>
-          new svgMap({
-            targetElementID: 'svgMapFamily',
-            data: svgMapDataFamily,
-            flagType: 'emoji',
-            mouseWheelZoomEnabled: true,
-            mouseWheelZoomWithKey: true,
-            colorMax: '#C63287',
-            colorMin: '#FFCEE6'
-          });
-        </script>
-      </div>
+         <div class="demo-container" id ="leisure">
+            <h2>leisure importance according to wvs wave 7 (2017-20)</h2>
+            <div id="svgMapLeisure"></div>
+            <script>     
+               new svgMap({
+               targetElementID: 'svgMapLeisure',
+               data: svgMapDataLeisure,
+               flagType: 'emoji',
+               mouseWheelZoomEnabled: true,
+               mouseWheelZoomWithKey: true,
+               colorMax: '#001e00',
+               colorMin: '#C5E8B7'
+               });          
+            </script>
+         </div>
 
-     
-    </div>
-  </body>
+         <div class="demo-container" id ="politics">
+            <h2>politics importance according to wvs wave 7 (2017-20)</h2>
+            <div id="svgMapPolitics"></div>
+            <script>
+               new svgMap({
+               targetElementID: 'svgMapPolitics',
+               data: svgMapDataPolitics,
+               flagType: 'emoji',
+               mouseWheelZoomEnabled: true,
+               mouseWheelZoomWithKey: true,
+               colorMax: '#341E00',
+               colorMin: '#E1AD01'
+               });          
+            </script>
+         </div>
+
+         <div class="demo-container" id ="work">
+            <h2>work importance according to wvs wave 7 (2017-20)</h2>
+            <div id="svgMapWork"></div>
+            <script>
+               new svgMap({
+               targetElementID: 'svgMapWork',
+               data: svgMapDataWork,
+               flagType: 'emoji',
+               mouseWheelZoomEnabled: true,
+               mouseWheelZoomWithKey: true,
+               colorMax: '#CC5500',
+               colorMin: '#CCB4A3'
+               });          
+            </script>
+         </div>
+
+         <div class="demo-container" id ="religion">
+            <h2>religion importance according to wvs wave 7 (2017-20)</h2>
+            <div id="svgMapReligion"></div>
+            <script>
+               new svgMap({
+               targetElementID: 'svgMapReligion',
+               data: svgMapDataReligion,
+               flagType: 'emoji',
+               mouseWheelZoomEnabled: true,
+               mouseWheelZoomWithKey: true,
+               colorMax: '#FF0000',
+               colorMin: '#FFCCCC'
+               });                 
+            </script>
+         </div>                                   
+      </div> 
+      <div class="col-md-3" id="info_box" >            
+            <table id="customers">
+               <caption><b>Overall World view of Social Values<b></caption>
+               <tr>
+                  <th>Categories</th>
+                  <th>Family</th>
+                  <th>Friends</th>
+                  <th>Leisure</th>
+                  <th>Politics</th>
+                  <th>Work</th>
+                  <th>Religion</th>
+               </tr>
+               <tr>
+                  <td>Very Important</td>
+                  <td>89.2</td>
+                  <td>44.9</td>
+                  <td>40.4</td>
+                  <td>12.6</td>
+                  <td>58.2</td>
+                  <td>37.8</td>
+               </tr>
+               <tr>
+                  <td>Rather Important</td>
+                  <td>9.3</td>
+                  <td>43.6</td>
+                  <td>44.4</td>
+                  <td>30.4</td>
+                  <td>30.8</td>
+                  <td>24.4</td>
+               </tr>
+               <tr>
+                  <td>Not Very Important</td>
+                  <td>1.0</td>
+                  <td>9.7</td>
+                  <td>12.3</td>
+                  <td>34.8</td>
+                  <td>6.7</td>
+                  <td>21.7</td>
+               </tr>
+               <tr>
+                  <td>Not at all Important</td>
+                  <td>0.2</td>
+                  <td>1.5</td>
+                  <td>2.3</td>
+                  <td>21.1</td>
+                  <td>3.4</td>
+                  <td>15.2</td>
+               </tr>
+               <tr>
+                  <td>Don't Know</td>
+                  <td>0.1</td>
+                  <td>0.1</td>
+                  <td>0.3</td>
+                  <td>0.6</td>
+                  <td>0.4</td>
+                  <td>0.6</td>
+               </tr>
+               <tr>
+                  <td>No Answer</td>
+                  <td>0.1</td>
+                  <td>0.1</td>
+                  <td>0.3</td>
+                  <td>0.6</td>
+                  <td>0.4</td>
+                  <td>0.6</td>
+               </tr>
+            </table>            
+         </div>  
+         </div>   
+   </body>
 </html>
