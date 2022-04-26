@@ -66,7 +66,7 @@ function svgMapWrapper(svgPanZoom) {
 
       // Called when a tooltip is created to custimize the tooltip content
       onGetTooltip: function (tooltipDiv, countryID, countryValues) {
-          return null;
+        return null;
       },
 
       // Country specific options
@@ -76,8 +76,7 @@ function svgMapWrapper(svgPanZoom) {
 
         // Crimea: Set to 'RU' to make the Crimea part of Russia, by default it is part of the Ukraine
         Crimea: 'UA'
-      },
-      
+      }
     };
 
     this.options = Object.assign({}, defaultOptions, options || {});
@@ -97,7 +96,6 @@ function svgMapWrapper(svgPanZoom) {
 
     // Global id
     this.id = this.options.targetElementID;
-    console.log(this.id);
 
     // Wrapper element
     this.wrapper = document.getElementById(this.options.targetElementID);
@@ -394,8 +392,6 @@ function svgMapWrapper(svgPanZoom) {
       value < min && (min = value);
     });
 
-   
-    
     data.data[data.applyData].thresholdMax &&
       (max = Math.min(max, data.data[data.applyData].thresholdMax));
     data.data[data.applyData].thresholdMin &&
@@ -429,6 +425,7 @@ function svgMapWrapper(svgPanZoom) {
           this.options.colorMin,
           ratio || ratio === 0 ? ratio : 1
         );
+        
         element.setAttribute('fill', color);
       }.bind(this)
     );
@@ -436,7 +433,9 @@ function svgMapWrapper(svgPanZoom) {
 
   // Emoji flags
 
+  // inserted the flags in the icons here
   svgMap.prototype.emojiFlags = {
+    
     AF: '🇦🇫',
     AX: '🇦🇽',
     AL: '🇦🇱',
@@ -803,7 +802,6 @@ function svgMapWrapper(svgPanZoom) {
               }
             }
             this.setTooltipContent(this.getTooltipContent(countryID));
-
             this.showTooltip(e);
             this.moveTooltip(e);
 
@@ -970,7 +968,7 @@ function svgMapWrapper(svgPanZoom) {
       var customDiv = this.options.onGetTooltip(
         this.tooltip,
         countryID,
-        this.options.data.values[countryID]        
+        this.options.data.values[countryID]
       );
 
       if (customDiv) {
